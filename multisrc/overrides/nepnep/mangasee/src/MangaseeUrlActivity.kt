@@ -1,12 +1,12 @@
 package eu.kanade.tachiyomi.multisrc.mangasee
- 
+
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import kotlin.system.exitProcess
- 
+
 /**
  * Springboard that accepts https://mangasee123.com/manga/xxxxxx intents and redirects them to
  * the main Tachiyomi process.
@@ -22,7 +22,7 @@ class MangaseeUrlActivity : Activity() {
                 putExtra("query", "id:$id")
                 putExtra("filter", packageName)
             }
- 
+
             try {
                 startActivity(mainIntent)
             } catch (e: ActivityNotFoundException) {
@@ -31,9 +31,8 @@ class MangaseeUrlActivity : Activity() {
         } else {
             Log.e("MangaseeUrlActivity", "could not parse uri from intent $intent")
         }
- 
+
         finish()
         exitProcess(0)
     }
 }
- 

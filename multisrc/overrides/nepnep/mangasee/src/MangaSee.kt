@@ -20,14 +20,14 @@ class MangaSee : NepNep("MangaSee", "https://mangasee123.com", "en") {
         if (query.startsWith("id:")) {
             val id = query.substringAfter("id:")
             return client.newCall(GET("$baseUrl/manga/$id/"))
-                .asObservableSuccess() 
+                .asObservableSuccess()
                 .map { response ->
-                    val manga = mangaDetailsParse(response) 
-                    manga.url = "/manga/$id/" 
+                    val manga = mangaDetailsParse(response)
+                    manga.url = "/manga/$id/"
                     MangasPage(listOf(manga), false)
                 }
         }
-        
+
         return super.fetchSearchManga(page, query, filters)
     }
 }
